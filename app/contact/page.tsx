@@ -32,9 +32,25 @@ export default function Contact() {
           </div>
         </div>
 
-        <p className="mt-8 text-gray-500 text-sm">
-          You can also connect with me on LinkedIn or GitHub (links will be added soon).
-        </p>
+        <div>
+            <h2 className="text-sm font-medium text-gray-500 mb-1">Social</h2>
+            <div className="flex gap-4 mt-1">
+              <a
+                href="https://github.com/vshmps24-hue"
+                target="_blank"
+                className="text-blue-600 hover:underline"
+              >
+                GitHub
+              </a>
+              <a
+                href="https://linkedin.com/in/vishwa-prakash-b2728315"
+                target="_blank"
+                className="text-blue-600 hover:underline"
+              >
+                LinkedIn
+              </a>
+            </div>
+          </div>
       </div>
     </main>
   );
