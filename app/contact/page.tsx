@@ -13,7 +13,7 @@ export default function Contact() {
           <div>
             <h2 className="text-sm font-medium text-gray-500 mb-1">Email</h2>
             <p className="text-lg text-gray-900">
-              your.email@example.com
+              vshmps24@gmail.com
             </p>
           </div>
 

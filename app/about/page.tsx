@@ -9,6 +9,7 @@ export default function Home() {
         </h1>
         <p className="text-xl text-gray-600 mb-8">
           Web Developer focused on building clean and useful applications with Next.js
+          I am passionate about creating user-friendly web experiences and continuously learning new technologies to improve my skills.
         </p>
         <div className="flex gap-4 justify-center">
           <Link
