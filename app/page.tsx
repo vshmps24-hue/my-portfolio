@@ -8,14 +8,14 @@ export default function Home() {
           Hi, I&apos;m Vishwa Prakash
         </h1>
         <p className="text-lg sm:text-xl text-gray-600 mb-8 leading-relaxed">
-          Web Developer focused on building clean and useful applications with Next.js
+          Web Developer focused on building clean and useful applications with Next.js, React, and TypeScript.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             href="/projects"
             className="bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition text-center"
           >
-            View My Projects
+            View Projects
           </Link>
           <Link
             href="/contact"
