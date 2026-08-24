@@ -1,4 +1,14 @@
 export default function About() {
+  const skills = [
+    "Next.js",
+    "React",
+    "TypeScript",
+    "JavaScript",
+    "Tailwind CSS",
+    "HTML & CSS",
+    "Git & GitHub",
+  ];
+
   return (
     <main className="min-h-screen bg-gray-50 dark:bg-gray-950 py-16 px-6">
       <div className="max-w-3xl mx-auto animate-fade-in">
@@ -8,29 +18,27 @@ export default function About() {
 
         <div className="space-y-5 text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-12">
           <p>
-            I am a web developer with several years of experience building websites and web applications. 
-            Over time I have worked with different technologies and am now focused on modern tools like 
-            <strong> Next.js</strong>, <strong>React</strong>, and <strong>TypeScript</strong>.
+            I am a web developer focused on building clean, fast, and useful web applications.
+            I work primarily with <strong>Next.js</strong>, <strong>React</strong>, and <strong>TypeScript</strong>.
           </p>
 
           <p>
-            I enjoy creating clean, fast, and useful applications. I believe in writing simple and 
-            maintainable code that solves real problems.
+            I believe in learning by building real projects instead of only watching tutorials.
+            My goal is to become a reliable developer who can deliver quality work and continuously improve.
           </p>
 
           <p>
-            Currently I am actively improving my skills by building real projects and learning deeply 
-            instead of just watching tutorials. My goal is to become a strong and reliable developer 
-            who can deliver quality work.
+            Currently I am strengthening my skills through consistent practice and by shipping real projects that I can be proud of.
           </p>
         </div>
 
+        {/* Skills */}
         <div className="mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
             Skills
           </h2>
           <div className="flex flex-wrap gap-3">
-            {["Next.js", "React", "TypeScript", "JavaScript", "Tailwind CSS", "HTML & CSS", "Git & GitHub"].map((skill) => (
+            {skills.map((skill) => (
               <span
                 key={skill}
                 className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 px-4 py-2 rounded-lg text-sm text-gray-800 dark:text-gray-200"
@@ -41,6 +49,7 @@ export default function About() {
           </div>
         </div>
 
+        {/* Approach */}
         <div>
           <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
             My Approach
@@ -48,15 +57,15 @@ export default function About() {
           <ul className="space-y-3 text-gray-700 dark:text-gray-300">
             <li className="flex gap-3">
               <span className="font-bold">•</span>
-              Focus on building real projects instead of only learning theory
+              Build real projects instead of only learning theory
             </li>
             <li className="flex gap-3">
               <span className="font-bold">•</span>
-              Write clean and understandable code
+              Write clean and maintainable code
             </li>
             <li className="flex gap-3">
               <span className="font-bold">•</span>
-              Continuously improve through practice and consistency
+              Focus on consistency and continuous improvement
             </li>
             <li className="flex gap-3">
               <span className="font-bold">•</span>
