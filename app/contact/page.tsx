@@ -1,4 +1,42 @@
+"use client";
+
+import { useState } from "react";
+
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // For now we just show a success message
+    // Later we can connect it to email service
+    console.log("Form submitted:", formData);
+    setIsSubmitted(true);
+
+    // Reset form
+    setFormData({
+      name: "",
+      email: "",
+      message: "",
+    });
+  };
+
   return (
     <main className="min-h-screen bg-gray-50 dark:bg-gray-950 py-16 px-6">
       <div className="max-w-2xl mx-auto">
@@ -9,56 +47,77 @@ export default function Contact() {
           Feel free to reach out if you want to work together or just say hello.
         </p>
 
-        <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-8 space-y-6">
-          <div>
-            <h2 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">
-              Email
-            </h2>
-            <p className="text-lg text-gray-900 dark:text-white">
-              vshmps24@gmail.com
-            </p>
+        {isSubmitted ? (
+          <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 text-green-700 dark:text-green-300 px-6 py-4 rounded-xl">
+            Thank you! Your message has been received. I will get back to you soon.
           </div>
-
-          <div>
-            <h2 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">
-              Location
-            </h2>
-            <p className="text-lg text-gray-900 dark:text-white">
-              India
-            </p>
-          </div>
-
-          <div>
-            <h2 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">
-              Available for
-            </h2>
-            <p className="text-lg text-gray-900 dark:text-white">
-              Freelance projects and full-time opportunities
-            </p>
-          </div>
-
-          <div>
-            <h2 className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">
-              Social
-            </h2>
-            <div className="flex gap-4 mt-1">
-              <a
-                href="https://github.com/vshmps24-hue"
-                target="_blank"
-                className="text-blue-600 dark:text-blue-400 hover:underline"
+        ) : (
+          <form
+            onSubmit={handleSubmit}
+            className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-8 space-y-6"
+          >
+            <div>
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
               >
-                GitHub
-              </a>
-              <a
-                href="https://linkedin.com/in/your-username"
-                target="_blank"
-                className="text-blue-600 dark:text-blue-400 hover:underline"
-              >
-                LinkedIn
-              </a>
+                Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                value={formData.name}
+                onChange={handleChange}
+                className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white"
+              />
             </div>
-          </div>
-        </div>
+
+            <div>
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+              >
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white"
+              />
+            </div>
+
+            <div>
+              <label
+                htmlFor="message"
+                className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+              >
+                Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                required
+                rows={5}
+                value={formData.message}
+                onChange={handleChange}
+                className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-black dark:focus:ring-white"
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="w-full bg-black dark:bg-white text-white dark:text-black py-3 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-200 transition font-medium"
+            >
+              Send Message
+            </button>
+          </form>
+        )}
       </div>
     </main>
   );
