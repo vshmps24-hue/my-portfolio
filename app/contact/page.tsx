@@ -21,7 +21,7 @@ export default function Contact() {
       ...prev,
       [name]: value,
     }));
-    setError(""); // clear error when user types
+    setError("");
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -42,19 +42,27 @@ export default function Contact() {
     try {
       setIsSubmitting(true);
 
-      // Simulate sending (we will connect real email later)
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
-      console.log("Form submitted:", formData);
-
-      setIsSubmitted(true);
-      setFormData({
-        name: "",
-        email: "",
-        message: "",
+      const response = await fetch("https://formspree.io/f/xdenvrzp", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formData),
       });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        setFormData({
+          name: "",
+          email: "",
+          message: "",
+        });
+      } else {
+        setError("Something went wrong. Please try again later.");
+      }
     } catch (err) {
-      setError("Something went wrong. Please try again.");
+      setError("Something went wrong. Please try again later.");
     } finally {
       setIsSubmitting(false);
     }
